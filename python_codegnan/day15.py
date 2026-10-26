@@ -16,7 +16,6 @@ def div(a, b):
     c = a / b
     # ERROR: Missing return c
 
-
 x = add(10, 15)
 y = sub(20, 10)
 z = div(25, 10)
