@@ -33,13 +33,13 @@ a = [
 
 print(a)#[(2, 3), (4, 1)]
 #set comprehension: create a set with even numbers from 1 to 20
-# a = set()#normal loop
+a = set()#normal loop
 
-# for x in range(1, 21):
-#     if x % 2 == 0:
-#         a.add(x)
+for x in range(1, 21):
+    if x % 2 == 0:
+        a.add(x)
 
-# print(a)
+print(a)
 
 #Using set comprehension:
 a = {x for x in range(1, 21) if x % 2 == 0}
@@ -56,26 +56,41 @@ print(n)# 1
 print(type(n))# <class 'int'>
 
 #generators
+# Define a generator function named numbers
 def numbers():
-    yield 1 
-    yield 2 
-    yield 3 
-    yield 4 
-n = numbers() 
-print(n)
-print(type(n))
-print(next(n))
-print(next(n))
-print(n.__next__())
-print(n.__next__())
-print(next(n)) 
+    yield 1  # Produce 1 and pause the generator
+    yield 2  # Resume and produce 2
+    yield 3  # Resume and produce 3
+    yield 4  # Resume and produce 4
 
+n = numbers()  # Create a generator object
+
+print(n)  # Print the generator object's information
+print(type(n))  # Print its type: <class 'generator'>
+
+print(next(n))  # Get the first value: 1
+print(next(n))  # Get the second value: 2
+print(n.__next__())  # Get the third value: 3
+print(n.__next__())  # Get the fourth value: 4
+
+# No values remain, so this call raises StopIteration
+# print(next(n))
+
+# Define a generator function named evennumbers()
 def evennumbers():
+    # Generate numbers from 1 to 9
     for x in range(1, 10):
+        # Check whether x is an even number
         if x % 2 == 0:
-            yield x 
+            # Produce the even number and pause the generator
+            yield x
+# Call the generator function and store the generator object in n
 n = evennumbers()
+# Get the first even number and print it: 2
 print(next(n))
+# Resume the generator, get the next even number, and print it: 4
 print(n.__next__())
+# Continue getting the remaining values from the generator
 for x in n:
+    # Print each remaining even number
     print(x)
